@@ -14,7 +14,7 @@ const db = knex({
   connection: {
     connectionString: process.env.DATABASE_URL,
     ssl: {
-      rejectUnauthorized: true,
+      rejectUnauthorized: false,
     },
   },
 });
@@ -25,7 +25,7 @@ app.use(express.json());
 app.use(cors());
 
 app.get('/', (req, res) => {
-  res.send('it is working now');
+  res.send('<h1>it is working now</h1>');
 });
 
 app.post('/signin', (req, res) => {
@@ -49,5 +49,5 @@ app.post('/imageurl', (req, res) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`app is running on port:${PORT}`);
+  console.log(`app is running on ${PORT}`);
 });
